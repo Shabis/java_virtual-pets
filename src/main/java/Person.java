@@ -46,6 +46,16 @@ public class Person {
     }
   }
 
+  public static Person find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM persons where id=:id";
+      Person person = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Person.class);
+        return person;
+    }
+  }
+
   public static List<Person> all() {
     String sql = "SELECT id, name, email FROM persons";
     try(Connection con = DB.sql2o.open()) {

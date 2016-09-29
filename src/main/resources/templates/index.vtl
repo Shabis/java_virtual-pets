@@ -1,0 +1,22 @@
+<h1>Welcome to Virtual Pets!</h1>
+
+<h3>Existing Users</h3>
+#if($persons)
+  <ul>
+    #foreach ($person in $persons)
+      <li><a href="/persons/$person.getId()"></a>$person.getName()</li>
+    #end
+  </ul>
+#else
+  <p>Add a user!</p>
+#end
+
+<form action="/persons" method="post">
+  <label for="name">Enter User Name</label>
+  <input type="text" id="name" name="name">
+    </br>
+  <label for="email">Enter User Email</label>
+  <input type="text" id="email" name="email">
+    </br>
+  <button class="btn btn-success" type="submit" name="button">SUBMIT</button>
+</form>
